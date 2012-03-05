@@ -19,5 +19,18 @@ class Tumblr
       r = self.class.get("#{@base_uri}/info", options)
       r["response"]["blog"]
     end
+
+    def avatar(size=nil)
+      valid_sizes = [16, 24, 30, 40, 48, 64, 96, 128, 512]
+      if size && !valid_sizes.include?(size)
+        raise Tumblr::InvalidSize
+      else
+        if size
+          r = self.class.get("#{@base_uri}/avatar/#{size}")
+        else
+          r = self.class.get("#{@base_uri}/avatar")
+        end
+      end
+    end
   end
 end

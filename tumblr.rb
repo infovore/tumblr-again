@@ -15,6 +15,8 @@ class Tumblr
   class BadRequest  < TumblrError; end  
   # tumblr 404 errors
   class NotFound    < TumblrError; end
+  # invalid Size for avatar
+  class InvalidSize < TumblrError; end
   
 end
 
